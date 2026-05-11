@@ -10,18 +10,12 @@
       "use": "@vercel/static-build",
       "config": { 
         "distDir": "build",
-        "installCommand": "npm install --legacy-peer-deps" 
+        "installCommand": "npm install --legacy-peer-deps"
       }
     }
   ],
   "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "backend/server.py"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "frontend/$1"
-    }
+    { "source": "/api/(.*)", "destination": "backend/server.py" },
+    { "source": "/(.*)", "destination": "frontend/$1" }
   ]
 }
