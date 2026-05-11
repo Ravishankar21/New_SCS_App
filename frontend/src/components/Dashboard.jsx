@@ -273,7 +273,7 @@ const Dashboard = () => {
     try {
       const formData = new FormData();
       formData.append('file', file);
-      const response = await axios.post(`${API}/upload-file`, formData, {
+      const response = await axios.post(`/upload-file`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       setUploadedStones(response.data);
@@ -320,7 +320,7 @@ const Dashboard = () => {
       return;
     }
     try {
-      const response = await axios.post(`${API}/prepare-export`, { format, gems: results });
+      const response = await axios.post(`/api/prepare-export`, { format, gems: results });
       // In handleExport function
       const downloadUrl = `${BACKEND_URL}/api/download/${response.data.token}`;
       /*const downloadUrl = `${API}/download/${response.data.token}`;*/
