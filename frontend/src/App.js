@@ -1,4 +1,4 @@
-import "@/App.css";
+import './App.css';
 import Dashboard from './components/Dashboard'; // Use a relative path
 
 function App() {
