@@ -297,7 +297,7 @@ const Dashboard = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post(`${API}/verify-stones`, { stone_ids: stoneIds });
+      const response = await axios.post(`/verify-stones`, { stone_ids: stoneIds });
       setResults(response.data);
       toast.success(`Verified ${response.data.length} stones`);
     } catch (error) {
