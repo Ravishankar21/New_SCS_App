@@ -4,14 +4,20 @@ import { useDropzone } from 'react-dropzone';
 import axios from 'axios';
 import { toast } from 'sonner';
 
-/*const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;*/
-// Provide a hardcoded fallback to your FastAPI port (8000)
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://127.0.0.1:8000';
-// Ensure this only has ONE /api prefix
-const API = `${BACKEND_URL}/api`;
-
+// --- REPLACE YOUR CURRENT CONFIG WITH THIS ---
 const isDev = process.env.NODE_ENV === 'development';
+
+// In production (Vercel), we use relative paths so the proxy/rewrites work.
+// In development, we point to the local FastAPI server.
+const API = isDev 
+  ? (process.env.REACT_APP_BACKEND_URL || 'http://127.0.0.1:8000') + '/api'
+  : '/api';
+
+// This is only used for the final download link
+const DOWNLOAD_BASE = isDev 
+  ? (process.env.REACT_APP_BACKEND_URL || 'http://127.0.0.1:8000') + '/api/download'
+  : '/api/download';
+// ----------
 
 // ───────────────────── Sub-components ─────────────────────
 
@@ -315,6 +321,29 @@ const Dashboard = () => {
   }, [activeTab, manualInput, uploadedStones]);
 
   const handleExport = React.useCallback(async (format) => {
+  if (results.length === 0) {
+    toast.error('No data to export');
+    return;
+  }
+  try {
+    const response = await axios.post(`${API}/prepare-export`, { format, gems: results });
+    
+    // Correctly construct the download link
+    const downloadUrl = `${DOWNLOAD_BASE}/${response.data.token}`;
+    
+    const a = document.createElement('a');
+    a.href = downloadUrl;
+    a.target = '_self'; 
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    toast.success(`Exported to ${format.toUpperCase()}`);
+  } catch (error) {
+    if (isDev) console.error('Export error:', error);
+    toast.error('Failed to export');
+  }
+}, [results]);
+  /*const handleExport = React.useCallback(async (format) => {
     if (results.length === 0) {
       toast.error('No data to export');
       return;
@@ -324,7 +353,7 @@ const Dashboard = () => {
       // In handleExport function
       const downloadUrl = `${BACKEND_URL}/api/download/${response.data.token}`;
       /*const downloadUrl = `${API}/download/${response.data.token}`;*/
-      const a = document.createElement('a');
+    /*  const a = document.createElement('a');
       a.href = downloadUrl;
       a.target = '_self';
       a.rel = 'noopener';
@@ -337,7 +366,7 @@ const Dashboard = () => {
       toast.error('Failed to export');
     }
   }, [results]);
-
+*/
   return (
     <div className="min-h-screen bg-white">
       <Header />
