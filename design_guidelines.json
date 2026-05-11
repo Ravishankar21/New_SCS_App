@@ -1,0 +1,78 @@
+{
+  "theme": "light",
+  "archetype": "Archetype 4 (Swiss & High-Contrast)",
+  "typography": {
+    "heading_font": "Cabinet Grotesk",
+    "body_font": "IBM Plex Sans",
+    "mono_font": "JetBrains Mono",
+    "font_weights": {
+      "headings": "font-medium to font-bold",
+      "body": "font-normal",
+      "labels": "font-semibold tracking-widest uppercase"
+    },
+    "scale": {
+      "h1": "text-3xl sm:text-4xl tracking-tight",
+      "h2": "text-2xl sm:text-3xl tracking-tight",
+      "h3": "text-xl",
+      "body": "text-sm sm:text-base",
+      "small": "text-xs text-slate-500"
+    }
+  },
+  "colors": {
+    "background": "#FFFFFF",
+    "surface": "#FAFAFA",
+    "border": "#E5E5E5",
+    "text_primary": "#0A0A0A",
+    "text_secondary": "#525252",
+    "primary": "#0A2540",
+    "primary_hover": "#173A5E",
+    "primary_foreground": "#FFFFFF",
+    "accent": "#0055FF",
+    "success": "#059669",
+    "error": "#E11D48"
+  },
+  "layout": {
+    "spacing_scale": "p-4, p-6, p-8 for containers, tight gap-4 for data grids",
+    "border_radius": "rounded-none sm:rounded-md",
+    "grid_strategy": "Control Room Pattern. Dense, data-heavy, full width utilization.",
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+  },
+  "surfaces": {
+    "dashboard_cards": "Flat background (bg-white), 1px solid border (border-slate-200), no shadow. On hover: subtle shadow-sm.",
+    "header": "Solid background (bg-white) with a hard 1px bottom border.",
+    "inputs": "Square or slightly rounded (rounded-sm), sharp 1px border. Focus state must have 2px ring of accent color."
+  },
+  "motion": {
+    "hover": "transition-colors duration-200 ease-in-out",
+    "focus": "ring-2 ring-offset-1 ring-primary/50 outline-none",
+    "entrance": "fade-in slide-in-from-bottom-2 duration-300"
+  },
+  "components": {
+    "buttons": "Flat, no shadow, rounded-sm, font-medium, tracking-wide.",
+    "tables": "Dense, tabular nums, sticky header, hover states on rows. Text aligned left, numbers aligned right.",
+    "inputs": "Textarea for multiple IDs, drag-and-drop zone for CSV/Excel.",
+    "badges": "Square borders, subtle tinted backgrounds."
+  },
+  "icons": {
+    "library": "lucide-react",
+    "style": "Stroke width 1.5, sharp and clinical."
+  },
+  "media": {
+    "background_texture": "https://images.unsplash.com/photo-1761461535556-9bec8112eaab?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzOTB8MHwxfHNlYXJjaHwyfHxjb3Jwb3JhdGUlMjBtaW5pbWFsaXN0JTIwYWJzdHJhY3QlMjB3aGl0ZSUyMHRleHR1cmV8ZW58MHx8fHwxNzc2MjUwNjM0fDA&ixlib=rb-4.1.0&q=85",
+    "hero_gem": "https://images.unsplash.com/photo-1750767324156-03168af8f8a5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTN8MHwxfHNlYXJjaHw0fHxkaWFtb25kJTIwZ2Vtc3RvbmUlMjBtYWNyb3xlbnwwfHx8fDE3NzYyNTA2MzR8MA&ixlib=rb-4.1.0&q=85",
+    "abstract_waves": "https://images.unsplash.com/photo-1772047678458-c183547dfba8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTN8MHwxfHNlYXJjaHwzfHxkaWFtb25kJTIwZ2Vtc3RvbmUlMjBtYWNyb3xlbnwwfHx8fDE3NzYyNTA2MzR8MA&ixlib=rb-4.1.0&q=85"
+  },
+  "accessibility": {
+    "contrast": "Ensure all text meets WCAG AA 4.5:1. Primary button text must be white against #0A2540.",
+    "testing": "All interactive elements must have data-testid attributes (e.g., data-testid='verify-stones-button')."
+  },
+  "instructions_to_main_agent": [
+    "Build a modern B2B dashboard for Gem/Stone Certificate Verification.",
+    "Implement a clean, high-contrast, 'Swiss' design aesthetic. Avoid soft, muddy gradients or heavy shadows.",
+    "Main interface should feature a split view or bento grid: Input area (Textarea for manual entry + File upload dropzone) and Results Table.",
+    "The data table must handle multiple rows clearly, displaying inventory_id, carat_wt, color, clarity, shape, and a generated certificate URL.",
+    "Use Cabinet Grotesk for headings and IBM Plex Sans for body text.",
+    "Integrate a sleek 'Export to PDF/Excel' action area.",
+    "Ensure all interactive elements have data-testid attributes."
+  ]
+}

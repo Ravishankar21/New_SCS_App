@@ -1,0 +1,19 @@
+/*{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "ignoreDeprecations": "5.0",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src"]
+}*/
+
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"],
+      "components/*": ["./src/components/*"]
+    }
+  }
+}
